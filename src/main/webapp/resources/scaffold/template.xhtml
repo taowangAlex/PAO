@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<f:view>
+	<ui:insert name="metadata" />
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>公司员工管理</title>
+		<link rel="shortcut icon" href="#{request.contextPath}/favicon.ico" />
+
+		<h:outputStylesheet library="css" name="contact-style.css" />
+
+		<ui:insert name="head" />
+
+	</h:head>
+
+	<h:body>
+		<div id="document">
+			<div id="header">
+				<h:panelGrid columns="2">
+					<h:graphicImage value="/images/logo_CNPC.gif" />
+					<h:outputText value="会议配套管理" />
+				</h:panelGrid>
+			</div>
+
+
+
+
+			<div id="container">
+				<!-- 导航边栏 -->
+				<div id="navigateTree">
+					<ui:insert name="navigateTree" />
+				</div>
+				<!-- 内容主体 -->
+				<div id="content">
+					<ui:insert name="content" />
+				</div>
+				<div class="spacer"></div>
+			</div>
+
+			<div id="footer">
+				<!-- 页脚信息  江 jsf的学习 -->
+				<h:panelGrid columns="2">
+					<h:graphicImage value="/images/foot_logo.gif" />
+
+					<h:panelGroup>
+						<h:panelGrid columns="1" class="footer_grid">
+							<h:panelGroup>
+								<h:panelGrid columns="4" rowClass="footer_note">
+									<h:outputLink class="footer_link"
+										href="http://www.cnpc.com.cn/cn/lxwm.shtml">联系我们</h:outputLink>
+									<h:outputLink class="footer_link"
+										href="http://www.cnpc.com.cn/cn/wzdt.shtml">网站地图</h:outputLink>
+									<h:outputLink class="footer_link"
+										href="http://www.cnpc.com.cn/cn/wzdt.shtml">法律声明</h:outputLink>
+									<h:outputLink class="footer_link"
+										href="http://www.cnpc.com.cn/cn/wzsybz.shtml">网站使用帮助</h:outputLink>
+								</h:panelGrid>
+							</h:panelGroup>
+
+							<h:outputText class="footer_note" value="版权所有：中国石油天然气集团公司" />
+							<h:outputText class="footer_note" value="技术支持：中国石油信息技术服务中心" />
+							<h:outputText class="footer_note"
+								value="建议使用IE6.0以上浏览器 1024*768分辨率浏览本站" />
+						</h:panelGrid>
+					</h:panelGroup>
+
+				</h:panelGrid>
+			</div>
+		</div>
+	</h:body>
+
+</f:view>
+</html>

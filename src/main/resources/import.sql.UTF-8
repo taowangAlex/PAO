@@ -1,0 +1,1 @@
+INSERT INTO `tbl_test` VALUES ('1','测试1'), ('2','测试2');
