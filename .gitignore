@@ -1,6 +1,10 @@
 *.class
-
+*.classpath
+*.forge_settings
+*.project
+*.settings
 # Package Files #
 *.jar
 *.war
 *.ear
+
