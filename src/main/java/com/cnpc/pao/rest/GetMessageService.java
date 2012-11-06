@@ -19,7 +19,7 @@ public class GetMessageService {
 	 @Inject
 	 TestService testService;
 	 @GET
-	   @Produces("application/xml")
+	   @Produces("application/json")
 	    public List<com.cnpc.pao.model.Test> getAll(@Context UriInfo uriInfo) {
 	        return getAll(uriInfo.getQueryParameters());
 	    }

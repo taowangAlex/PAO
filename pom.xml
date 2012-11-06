@@ -13,8 +13,9 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<errai.version>2.1.0.Final</errai.version>
 		<gwt.version>2.4.0</gwt.version>
-		<mvel.version>2.1.Beta8</mvel.version>
 		<jboss.bom.version>1.0.0.Final</jboss.bom.version>
+		<weld.version>1.1.6.Final</weld.version>
+		<errai.run.target>http://localhost:8080/pao/errai-test.html</errai.run.target>
 	</properties>
 
 	<dependencyManagement>
@@ -113,13 +114,13 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.10</version>
+			<version>4.10</version><!--$NO-MVN-MAN-VER$ -->
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.jboss.arquillian.junit</groupId>
 			<artifactId>arquillian-junit-container</artifactId>
-			<version>1.0.0.CR7</version>
+			<version>1.0.0.CR7</version><!--$NO-MVN-MAN-VER$ -->
 			<scope>test</scope>
 		</dependency>
 		<!-- 打印日志logging框架 -->
@@ -136,7 +137,7 @@
 			<scope>provided</scope>
 			<optional>true</optional>
 		</dependency>
-
+        <!-- el表达式？这个依赖的必要性没有测试过 -->
 		<dependency>
 			<groupId>org.glassfish.web</groupId>
 			<artifactId>el-impl</artifactId>
@@ -149,8 +150,7 @@
 			<version>3.4.1</version>
 		</dependency>
 
-		<!-- The next set of dependencies are for Errai, which we use for the TicketMonster 
-			booking monitor -->
+		<!-- The next set of dependencies are for Errai項目暫時未使用到的 -->
 		<dependency>
 			<groupId>org.jboss.errai</groupId>
 			<artifactId>errai-bus</artifactId>
@@ -212,7 +212,7 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-
+		
 		<dependency>
 			<groupId>com.google.gwt</groupId>
 			<artifactId>gwt-user</artifactId>
@@ -324,34 +324,33 @@
 		</pluginManagement>
 		<plugins>
 			<!-- GWT plugin to compile client-side java code to javascript and to 
-				run GWT development mode -->
+				run GWT development mode 這個是無server的配置，如果需要配置server，web也需要增加listener，
+				具體視cdi使用情況而定，參照官方文檔-->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>gwt-maven-plugin</artifactId>
 				<version>2.4.0</version>
 				<configuration>
-					<inplace>true</inplace>
 					<logLevel>INFO</logLevel>
+					<runTarget>${errai.run.target}</runTarget>
 					<extraJvmArgs>-Xmx512m</extraJvmArgs>
-					<draftCompile>true</draftCompile>
-					<!-- Configure GWT's development mode (formerly known as hosted mode) 
-						to not start the default server (embedded jetty), but to download the HTML 
-						host page from the configured runTarget.即放置gwt的框架页的地方 -->
-					<noServer>true</noServer>
-					<runTarget>http://localhost:8080/gwt/errai-test.html</runTarget>
+					<soyc>false</soyc>
+					<noserver>true</noserver>
 				</configuration>
+
 				<executions>
-					<execution>
-						<goals>
-							<goal>resources</goal>
-							<goal>compile</goal>
-						</goals>
-					</execution>
 					<execution>
 						<id>gwt-clean</id>
 						<phase>clean</phase>
 						<goals>
 							<goal>clean</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>gwt-compile</id>
+						<goals>
+							<goal>resources</goal>
+							<goal>compile</goal>
 						</goals>
 					</execution>
 				</executions>

@@ -41,5 +41,8 @@ public class TestService implements Serializable {
 		}
 		return null;
 	}
+	public void deleteTest(Long id) {
+		testDAO.Delete(id);
+	}
 	
 }

@@ -6,6 +6,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+
+import org.jboss.errai.common.client.api.annotations.Portable;
+@Portable
 @Entity(name="tbl_test")
 @AttributeOverrides( { @AttributeOverride(name = "id", column = @Column(name = "test_id")) })
 @NamedQueries({@NamedQuery(name = "findAllTests", query = "SELECT test FROM com.cnpc.pao.model.Test test ")})

@@ -11,6 +11,7 @@ import javax.persistence.Query;
 
 import org.jboss.solder.logging.Logger;
 
+import com.cnpc.pao.gwt.client.shared.qualifier.Delete;
 import com.cnpc.pao.model.Test;
 import com.cnpc.pao.util.LoggingInterceptor;
 
@@ -37,5 +38,9 @@ public class TestDAO implements Serializable{
 		}
 		 return null;
 	 }
+	@Interceptors(LoggingInterceptor.class)
+	public void Delete(Long id){
+		em.remove(em.find(Test.class, id));
+	}
 	
 }
